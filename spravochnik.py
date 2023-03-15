@@ -1,3 +1,4 @@
+# программа по работе со справочником
 TEXTFILE = 'file.txt'
 def phonebook_read():
     with open(TEXTFILE, encoding='UTF-8') as file:
