@@ -1,6 +1,8 @@
 
 import re
 TEXTFILE = 'file.txt'
+TEXTFILE_TOTAL = 'file.txt2'
+TEXTFILE_for_correct = 'file.txt1'
 str_3 =  'Baffie  kot       Bara                | 12445'
 # str_4 =  'Gringo Valley Skott            | 345'
 lst_5 = ['Gringo', 'Valley', 'Skott', '345', '345345353454']
@@ -54,17 +56,17 @@ dict_4 = {0: 'Rambo', 1: 'John', 2: '111'}
 # dict_4[new_num1] = new_word1
 # print(dict_4)
 
-def string_add(lst):
-    lenght_fio = 30
-    input_fio = ''
-    for i in range(len(lst) - 1):
-        input_fio = input_fio + lst.get(i) + ' '
-    input_phone = lst.get(len(lst) - 1)
+# def string_add(lst):
+#     lenght_fio = 30
+#     input_fio = ''
+#     for i in range(len(lst) - 1):
+#         input_fio = input_fio + lst.get(i) + ' '
+#     input_phone = lst.get(len(lst) - 1)
 
-    if len(input_fio) <= lenght_fio:
-        input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
-        new_str = input_fio + ' | ' + input_phone
-    return new_str 
+#     if len(input_fio) <= lenght_fio:
+#         input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
+#         new_str = input_fio + ' | ' + input_phone
+#     return new_str 
 
 # print(len(dict_4))
 # print(dict_4.get(0))
@@ -85,16 +87,74 @@ def string_add(lst):
 
 # print(string_add(lst_5))
 
-print('      dwfsdfsdf'.strip())
+# print('      dwfsdfsdf'.strip())
 
-def string_add(list_old):
-    lenght_fio = 30
-    input_fio = ''
-    for i in range(len(list_old) - 1):
-        input_fio = input_fio + list_old[i] + ' '
-    input_phone = list_old[len(list_old) - 1]
+# def string_add(list_old):
+#     lenght_fio = 30
+#     input_fio = ''
+#     for i in range(len(list_old) - 1):
+#         input_fio = input_fio + list_old[i] + ' '
+#     input_phone = list_old[len(list_old) - 1]
 
-    if len(input_fio) <= lenght_fio:
-        input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
-        new_str = input_fio + ' | ' + input_phone + '\n'
-    return new_str
+#     if len(input_fio) <= lenght_fio:
+#         input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
+#         new_str = input_fio + ' | ' + input_phone + '\n'
+#     return new_str
+# f = open('file.txt',"r") 
+# lines = f.readlines()
+# f.close()
+
+# with open('file.txt1') as TEXTFILE_for_correct: ## Открываем файл
+#     my_lines = list(TEXTFILE_for_correct) ## Помещаем в список.
+# ## Выводим нужные строки (Помним, что массив начинается с 0, так что все указатели на 1 меньше)
+#     f1_total = open('file.txt2',"w")
+
+#     for line in lines: 
+#         if line != str(my_lines[2]): 
+#             f1_total.write(line)
+#     f1_total.close()
+
+
+
+    # print(my_lines[1])
+# -----------------
+# f = open('file.txt',"r") 
+# lines = f.readlines()
+# f.close()
+
+# file_correct = open(TEXTFILE_for_correct,"r")
+# lines1 = file_correct.readlines()
+# file_correct.close()
+
+
+
+    # /------------------
+# for line in lines: 
+#     if line is not lines1 in file_correct + "\n": f_total.write(line)
+    
+# f.close() 
+# def string_add(list_old):
+#     lenght_fio = 30
+#     input_fio = ''
+#     for i in range(len(list_old) - 1):
+#         input_fio = input_fio + list_old[i] + ' '
+#     input_phone = list_old[len(list_old) - 1]
+
+#     if len(input_fio) <= lenght_fio:
+#         input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
+#         new_str = '' + input_fio + ' | ' + input_phone
+#     return new_str
+
+# def string_change(str_old, str_new):
+#     with open ('file.txt', 'r') as f:
+#         old_data = f.read()
+#         # str_old = string_add(['Roman', 'Bolgarin', '1223545'])
+#         # str_new = 'Harley Davidson                | 567'
+#         new_data = old_data.replace(str_old, str_new)
+
+#     with open ('file.txt', 'w') as f:
+#         f.write(new_data)
+
+new_word = input('Введите элементы, через пробел, на которые хотите изменить:\n')
+new_word = list(map(str, new_word.split()))
+print(new_word)

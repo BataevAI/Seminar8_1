@@ -1,12 +1,26 @@
 # программа по работе со справочником
 import re
+import shutil
 TEXTFILE = 'file.txt'
 TEXTFILE_for_correct = 'file.txt1'
+TEXTFILE_TOTAL = 'file.txt2'
 old_string = ''
 
 def phonebook_read():
     with open(TEXTFILE, encoding='UTF-8') as file:
         print(file.read())
+# ??????????????????????????????????????????
+def string_change(str_old, str_new):
+    with open ('file.txt', 'r') as f:
+        old_data = f.read()
+        # str_old = string_add(str_old)
+        # str_new = 'Harley Davidson                | 567'
+        new_data = old_data.replace(str_old, str_new)
+
+    with open ('file.txt', 'w') as f:
+        f.write(new_data)
+#????????????????????????????????????????????   
+      
       
 def contact_add():
     lenght_fio = 30
@@ -16,11 +30,10 @@ def contact_add():
         if len(input_fio) <= lenght_fio: 
             input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' '          
             file.write(f'{input_fio} | {input_phone}\n')
-            
 
-def change_add_in_file(str_add):
-    # with open(TEXTFILE, 'a', encoding='UTF-8') as file:
-    #     file.write(str_add)
+# ------------------------------------------
+
+def change_add_in_file(str_add):   
     with open(TEXTFILE_for_correct, 'a', encoding='UTF-8') as file1:
         file1.write(str_add)
 
@@ -49,8 +62,6 @@ def change_list_to_dict(lst) -> dict:
     dict_new = dict(enumerate(lst))
     return dict_new
     
-
-
 def contact_search():
     with open(TEXTFILE, encoding='UTF-8') as file:
         print('    ')
@@ -89,13 +100,14 @@ def string_add(dict_old):
 def string_add(list_old):
     lenght_fio = 30
     input_fio = ''
+    new_str = ''
     for i in range(len(list_old) - 1):
         input_fio = input_fio + list_old[i] + ' '
-    input_phone = list_old[len(list_old) - 1]
+        input_phone = list_old[len(list_old) - 1]
 
-    if len(input_fio) <= lenght_fio:
-        input_fio = input_fio + (lenght_fio - len(input_fio)) * ' ' 
-        new_str = input_fio + ' | ' + input_phone + '\n'
+        if len(input_fio) <= lenght_fio:
+            input_fio = input_fio + (lenght_fio - len(input_fio)) * ' '
+            new_str = input_fio + ' | ' + input_phone + '\n'
     return new_str
 
 def contact_change():
@@ -106,27 +118,27 @@ def contact_change():
         lst_2 = []        
         for i in file_search:            
             if search.lower() in i.lower():                                
-                lst_2.append(i)                
+                lst_2.append(i)
+                print(f'найдены следующие контакты: {i}')                
 
     if len(lst_2) == 1:
-        str_1 = (' '.join(map(str, lst_2))) + '\n'
-        
-        change_add_in_file(str_1)
-        lst_2 = change_list_to_dict(import_words(str(*lst_2)))
-        print_dict(lst_2)
-        new_num = int(input('Введите номер элемента, который хотите изменить:\n'))
+        # str_1 = (' '.join(map(str, lst_2))) + '\n'
+        # print(str_1)     
+        # lst_2 = change_list_to_dict(import_words(str(*lst_2)))
+        # print_dict(lst_2)
+        # new_num = int(input('Введите номер элемента, который хотите изменить:\n'))
       
-        new_word = input('Введите элемент, на который хотите изменить:\n')
-        lst_2[new_num] = new_word
-        lst_2 = string_add(lst_2)
-        # print(f'Строка справочника после изменений будет выглядеть:\n {lst_2} \n')
-        change_add_in_file(lst_2)
-        return lst_2
-        
+        new_word = input('Введите элементы, через пробел, на которые хотите изменить:\n')
+        new_word = string_add(list(map(str, new_word.split())))
+        print(new_word)
+        # print(i)
+        old_word = string_add(lst_2)
+        print(old_word)
+        string_change(old_word, new_word)   
          
     elif len(lst_2) > 1:
         lst_2 = change_list_to_dict(lst_2)
-        
+
         print_dict(lst_2)        
         new_num = int(input('Введите номер строки, которую хотите изменить:\n'))
         print(f'lst_2.get(new_num): {lst_2.get(new_num)}')        
@@ -157,12 +169,14 @@ def main():
                 '  введите re - для чтения справочника \n'
                 '  введите se - для поиска в справочнике \n'
                 '  введите st - для завершения работы со справочником \n'
-                '  Введите ch - для название изменения данных справочника \n')
+                '  Введите ch - для изменения данных справочника \n'
+                '  Введите del - для удаления данных справочника \n')
         mode = input()
         if mode   == 'ad': contact_add()
         elif mode == 're': phonebook_read()
         elif mode == 'se': contact_search()
         elif mode == 'ch': contact_change()
+        elif mode == 'del':contact_del()
         elif mode == 'st': break
 
 
