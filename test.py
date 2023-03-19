@@ -36,9 +36,9 @@ def change_words2(lst, item, new_item) -> dict:
 # print(change_words2(import_words(str_3), 0, 'Batanaaev'))
 
 
-dict_2 = {0: 'Terminator', 1: 'T800', 2: '0000'}
-lst_5 = [dict_2.get(i) for i in dict_2]
-# print(lst_5)
+# dict_2 = {0: 'Terminator', 1: 'T800', 2: '0000'}
+# lst_5 = [dict_2.get(i) for i in dict_2]
+
 
 dict_3 = {0: 'Rambo John                     | 111',
 1: 'Joan Linsky                    | 564',
@@ -66,6 +66,35 @@ def string_add(lst):
         new_str = input_fio + ' | ' + input_phone
     return new_str 
 
-print(len(dict_4))
-print(dict_4.get(0))
-print(string_add(dict_4))
+# print(len(dict_4))
+# print(dict_4.get(0))
+# print(string_add(dict_4))
+
+# def string_add(list_old):
+#     lenght_fio = 30
+#     input_fio = ''
+#     for i in range(len(list_old) - 1):
+#         input_fio = input_fio + list_old[i] + ' '
+#     input_phone = list_old[len(list_old) - 1]
+
+#     if len(input_fio) <= lenght_fio:
+#         input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
+#         new_str = input_fio + ' | ' + input_phone
+#     return new_str 
+
+
+# print(string_add(lst_5))
+
+print('      dwfsdfsdf'.strip())
+
+def string_add(list_old):
+    lenght_fio = 30
+    input_fio = ''
+    for i in range(len(list_old) - 1):
+        input_fio = input_fio + list_old[i] + ' '
+    input_phone = list_old[len(list_old) - 1]
+
+    if len(input_fio) <= lenght_fio:
+        input_fio = '' + input_fio + (lenght_fio - len(input_fio)) * ' ' 
+        new_str = input_fio + ' | ' + input_phone + '\n'
+    return new_str
